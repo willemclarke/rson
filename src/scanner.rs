@@ -58,12 +58,21 @@ pub fn scan(input: String) -> Result<Tokens, String> {
             // string
             '"' => {
                 let mut last_matched = None;
+                let mut escaped = false;
 
                 let string: String = char_indices
                     .by_ref()
                     .take_while(|(_pos, char)| {
-                        last_matched = Some(*char);
-                        *char != '"'
+                        if escaped {
+                            escaped = false;
+                            true
+                        } else if *char == '\\' {
+                            escaped = true;
+                            true
+                        } else {
+                            last_matched = Some(*char);
+                            *char != '"'
+                        }
                     })
                     .map(|(_pos, char)| char)
                     .collect();

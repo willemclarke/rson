@@ -19,5 +19,9 @@ Ok(JObject({
 }))
 ```
 
+Running against the `sample.json` file with `hyperfine target/release/rson`:
+![image](https://github.com/user-attachments/assets/498d76d1-376e-4130-a20f-cc85201b7d35)
+
+
 References:
 - Used this article to get me started on scanning & `char_indicies`: https://petermalmgren.com/token-scanning-with-rust/
